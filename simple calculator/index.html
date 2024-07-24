@@ -19,15 +19,32 @@
     <section id="calculator">
       <input type="number" id="input-number" />
       <div id="calc-actions">
-        <button type="button" id="btn-add">+</button>
-        <button type="button" id="btn-subtract">-</button>
-        <button type="button" id="btn-multiply">*</button>
-        <button type="button" id="btn-divide">/</button>
+        <div id="number-buttons">
+          <button type="button" id="btn-nine" class="number-button" value="9">9</button>
+          <button type="button" id="btn-eight" class="number-button" value="8">8</button>
+          <button type="button" id="btn-seven" class="number-button" value="7">7</button>
+          <button type="button" id="btn-six" class="number-button" value="6">6</button>
+          <button type="button" id="btn-five" class="number-button" value="5">5</button>
+          <button type="button" id="btn-four" class="number-button" value="4">4</button>
+          <button type="button" id="btn-three" class="number-button" value="3">3</button>
+          <button type="button" id="btn-two" class="number-button" value="2">2</button>
+          <button type="button" id="btn-one" class="number-button" value="1">1</button>
+          <button type="button" id="btn-zero" class="number-button" value="0">0</button>
+          <button type="button" id="btn-decimal" class="number-button" value="">.</button>
+          <button type="button" id="btn-negate" class="number-button">+/-</button>
+        </div>
+
+        <div id="simple-calc-actions">
+          <button type="button" id="btn-add">+</button>
+          <button type="button" id="btn-subtract">-</button>
+          <button type="button" id="btn-multiply">*</button>
+          <button type="button" id="btn-divide">/</button>
+          <button type="button" id="btn-execute">=</button>
+        </div>
       </div>
     </section>
     <section id="results">
       <h2 id="current-calculation">0</h2>
-      <h2>Result: <span id="current-result">0</span></h2>
     </section>
     <script src="assets/scripts/vendor.js"></script>
     <script src="assets/scripts/app.js"></script>
