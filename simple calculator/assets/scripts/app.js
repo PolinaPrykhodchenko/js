@@ -78,6 +78,19 @@ function divide() {
     calculateResult('DIVIDE');
 }
 
+function negate() {
+    userInput.value = - userInput.value;
+}
+
+function addDecimalPoint() {
+    const currentUserInputValue = userInput.value;
+    const allDotsInString = currentUserInputValue.match(/\./g);
+
+    if (!allDotsInString) {
+        userInput.value = `${currentUserInputValue}.`;
+    }
+}
+
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener('click', subtract);
 multiplyBtn.addEventListener('click', multiply);
