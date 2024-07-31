@@ -1,0 +1,40 @@
+/* variables.css */
+:root {
+    /* Colors */
+    --primary-color: #404040;
+    --secondary-color: #f39c12;
+    --accent-color: white;
+    --background-color: black;
+    --text-color: white;
+    --text-color-inverted: black;
+
+    /* Font Sizes */
+    --font-size-small: 10px;
+    --font-size-base: 20px;
+    --font-size-large: 25px;
+    --font-size-xlarge: 35px;
+
+    /* Spacing (Padding and Margin) */
+    --spacing-xs: 0;
+    --spacing-sm: 5px;
+    --spacing-md: 10px;
+    --spacing-lg: 15px;
+    --spacing-xl: 20px;
+
+    /* Borders and Radius */
+    --border-width: 1px;
+    --border-style: solid;
+    --border-radius-xs: 10px;
+    --border-radius-sm: 20px;
+    --border-radius-md: 40px;
+    --border-radius-lg: 50px;
+    --font-family-sans: "Open Sans", sans-serif;
+}
+
+:root.light-theme {
+    --primary-color: #cfcfcf;
+    --accent-color: black;
+    --background-color: #ecf0f1;
+    --text-color: black;
+    --text-color-inverted: white;
+}
