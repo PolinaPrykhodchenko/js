@@ -22,6 +22,14 @@ function completeAlgebraicExpression(
     writeToLog();
 }
 
+function calculatePercentage(algebraicValue: number | null): number | null {
+    return algebraicValue ? algebraicValue / 100 : null;
+}
+
+function negateNumber(algebraicValue: number): number {
+    return -algebraicValue;
+}
+
 function executeAlgebraicExpression(): void {
     const isAlgebraicExpressionNotCompleted: string | null =
         getLastChar(algebraicExpression);
@@ -36,11 +44,11 @@ function executeAlgebraicExpression(): void {
 }
 
 function writeToLog(): void {
-    rewriteLogParagraph(algebraicExpression);
+    rewriteLogParagraph(algebraicExpression || 'No log info');
 }
 
 function writeExecutionResult(): void {
-    rewriteResultParagraph(executionResult);
+    rewriteResultParagraph(executionResult || 'No results');
 }
 
 function getLastChar(str: string): string | null {
@@ -52,3 +60,12 @@ function getLastChar(str: string): string | null {
         return null;
     }
 }
+
+function resetCalculationHistory(): void {
+    executionResult = 0;
+    algebraicExpression = '';
+
+    writeToLog();
+    writeExecutionResult();
+}
+

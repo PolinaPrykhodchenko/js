@@ -128,15 +128,23 @@
             <div class="action-buttons-wrapper">
                 <button
                         type="button"
-                        value="clear"
-                        class="action-button"
+                        value="ENTRY_CLEAR"
+                        class="action-button hiddenButton"
                         onclick="buttonClicked(this)"
                 >
-                    <span id="clear-button-span">CA</span>
+                    <span>CE</span>
                 </button>
                 <button
                         type="button"
-                        value="percent"
+                        value="ALL_CLEAR"
+                        class="action-button"
+                        onclick="buttonClicked(this)"
+                >
+                    <span>CA</span>
+                </button>
+                <button
+                        type="button"
+                        value="PERCENTAGE"
                         class="action-button"
                         onclick="buttonClicked(this)"
                 >
@@ -144,7 +152,7 @@
                 </button>
                 <button
                         type="button"
-                        value="negate"
+                        value="NEGATE"
                         class="action-button"
                         onclick="buttonClicked(this)"
                 >

@@ -22,7 +22,7 @@ const toggleButton: HTMLButtonElement = document.getElementById(
 ) as HTMLButtonElement;
 const toggleIcon: HTMLElement = document.getElementById("toggle-icon") as HTMLElement;
 
-const ALGEBRAIC_OPERATORS: {
+const CALCULATOR_ACTIONS: {
     [key: string]: string;
 } = {
     ADD: "+",
@@ -30,6 +30,10 @@ const ALGEBRAIC_OPERATORS: {
     MULTIPLY: "*",
     DIVIDE: "/",
     EXECUTE: "=",
+    NEGATE: "negate",
+    PERCENTAGE: "percentage",
+    ENTRY_CLEAR: "entry clear",
+    ALL_CLEAR: "all clear",
 };
 
 let isNumberButtonClickAfterMathOperator: boolean = false;
@@ -64,13 +68,13 @@ function handleUserInput(): void {
 
         /* resets user input value after the algebraic operation was selected */
         if (!isNumberButtonClickAfterMathOperator) {
-            resetUserInputValue();
+            resetUserInputValue(null);
             isNumberButtonClickAfterMathOperator = true;
         }
 
         /* formats user input value if the first, only character is zero and the next typed number > 0(09 -> 9) */
         if (userInputValue === 0 && eventKet > 0 && eventKet <= 9) {
-            resetUserInputValue();
+            resetUserInputValue(null);
         }
     });
 }
@@ -79,7 +83,7 @@ function handleNumberButtons(): void {
     /* adding a listener to number buttons for writing a value into user input on the click */
     for (let i: number = 0; i < numberButtons.length; i++) {
         numberButtons[i]?.addEventListener("click", (evt: MouseEvent): void => {
-            if (!isNumberButtonClickAfterMathOperator) resetUserInputValue();
+            if (!isNumberButtonClickAfterMathOperator) resetUserInputValue(null);
 
             const buttonElement: HTMLButtonElement =
                 evt.currentTarget as HTMLButtonElement;
@@ -87,9 +91,6 @@ function handleNumberButtons(): void {
             const userInputValue: string = userInput.value;
 
             switch (buttonValue) {
-                case 'negate':
-                    userInput.value = `${-userInputValue}`;
-                    break;
                 case 'decimal':
                     addDecimalPart(userInputValue);
                     break;
@@ -105,21 +106,36 @@ function handleActionButtons(): void {
         actionButtons[i].addEventListener("click", (ev: MouseEvent): void => {
             const buttonElement: HTMLButtonElement =
                 ev.currentTarget as HTMLButtonElement;
-            const operatorValue: string = ALGEBRAIC_OPERATORS[buttonElement.value];
+            const operatorValue: string = CALCULATOR_ACTIONS[buttonElement.value];
             const userInputValue: number = parseFloat(userInput.value);
 
-            if (operatorValue && operatorValue !== ALGEBRAIC_OPERATORS.EXECUTE) {
-                completeAlgebraicExpression(userInputValue, operatorValue);
 
-                isNumberButtonClickAfterMathOperator = false;
-            } else if (
-                operatorValue &&
-                operatorValue === ALGEBRAIC_OPERATORS.EXECUTE
-            ) {
-                completeAlgebraicExpression(userInputValue, null);
-                executeAlgebraicExpression();
+            switch (operatorValue) {
+                case CALCULATOR_ACTIONS.NEGATE:
+                    resetUserInputValue(negateNumber(userInputValue));
+                    break;
+                case CALCULATOR_ACTIONS.PERCENTAGE:
+                    resetUserInputValue(calculatePercentage(userInputValue));
+                    break;
+                case CALCULATOR_ACTIONS.ENTRY_CLEAR:
+                    resetUserInputValue(null);
 
-                isNumberButtonClickAfterMathOperator = true;
+                    break;
+                case CALCULATOR_ACTIONS.ALL_CLEAR:
+                    resetCalculationHistory();
+                    resetUserInputValue(null);
+
+                    break;
+                case CALCULATOR_ACTIONS.EXECUTE:
+                    completeAlgebraicExpression(userInputValue, null);
+                    executeAlgebraicExpression();
+
+                    isNumberButtonClickAfterMathOperator = true;
+                    break;
+                default:
+                    completeAlgebraicExpression(userInputValue, operatorValue);
+
+                    isNumberButtonClickAfterMathOperator = false;
             }
         });
     }
@@ -129,17 +145,19 @@ function rewriteLogParagraph(log: string): void {
     logParagraph.innerText = log;
 }
 
-function rewriteResultParagraph(executionResult: number): void {
-    resultParagraph.innerText = executionResult.toString();
-    userInput.value = executionResult.toString();
+function rewriteResultParagraph(executionResult: number | string): void {
+    resultParagraph.innerText = `${executionResult}`;
+    userInput.value = `${executionResult}`;
 }
 
-function resetUserInputValue(): void {
-    userInput.value = "";
+function resetUserInputValue(value: number | null): void {
+    userInput.value = value ? value.toString() : '0';
 }
 
 function setNumberIntoUserInput(userInputValue: string, buttonValue: string): void {
-    if (!parseFloat(userInputValue)) {
+    const isDecimalPartExists: boolean = userInputValue.includes('.');
+
+    if (!parseFloat(userInputValue) && !isDecimalPartExists) {
         userInput.value = `${buttonValue}`;
     } else {
         userInput.value = `${userInputValue}${buttonValue}`;
@@ -177,8 +195,6 @@ function buttonClicked(button: HTMLButtonElement): void {
 
     switch (buttonType) {
         case "number-button":
-        case "decimal-button":
-        case "negate-button":
             button.classList.add("clicked-num-button");
             break;
         default:
