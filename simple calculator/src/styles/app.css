@@ -1,0 +1,113 @@
+@import "variables.css";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-family-sans), sans-serif;
+    font-size: var(--font-size-base);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: var(--spacing-md);
+    height: 100vh;
+    margin: var(--spacing-xs);
+    background-color: var(--background-color);
+}
+
+header {
+    text-align: center;
+    color: var(--text-color);
+    padding: var(--spacing-xs);
+    margin: var(--spacing-xs);
+    width: 100%;
+}
+
+header h1 {
+    font-size: var(--font-size-xlarge);
+}
+
+.toggle-theme-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.calculation-execution-result-wrapper,
+.calculator-wrapper,
+.calculation-log-wrapper,
+.calculation-result-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: var(--spacing-md);
+    color: var(--text-color);
+}
+
+.calculation-log-wrapper,
+.calculation-execution-result-wrapper {
+    width: 100%;
+}
+
+.calculation-result-wrapper,
+.calculator-wrapper {
+    min-width: 40%;
+    max-width: 90%;
+}
+
+.calculation-execution-result-wrapper h2,
+.calculation-log-wrapper h2 {
+    margin: var(--spacing-xs);
+    font-size: var(--font-size-large);
+}
+
+.calculation-execution-result-wrapper,
+.calculation-log-wrapper {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-xs);
+    padding: var(--spacing-md);
+}
+
+.calculation-execution-result-wrapper {
+    text-align: center;
+}
+
+.calculator-functional-wrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.calculator-actions-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-sm);
+}
+
+.calculator-buttons-wrapper {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-sm);
+}
+
+.action-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: var(--spacing-sm);
+}
+
+.number-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: var(--spacing-sm);
+    column-gap: var(--spacing-sm);
+}
+

@@ -1,0 +1,31 @@
+@import "variables.css";
+
+.calculator-input {
+  font: inherit;
+  font-size: var(--font-size-large);
+  border: var(--border-width) var(--border-style) var(--primary-color);
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-md);
+  width: 100%;
+  height: 70px;
+  padding: var(--spacing-lg);
+  display: block;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.calculator-input:focus {
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.calculator-input::-webkit-outer-spin-button,
+.calculator-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: var(--spacing-xs);
+}
+
+/* Firefox */
+.calculator-input[type="number"] {
+  -moz-appearance: textfield;
+}
