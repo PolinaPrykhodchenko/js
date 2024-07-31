@@ -1,0 +1,84 @@
+@import "variables.css";
+
+.zero-button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    flex-grow: 2;
+}
+
+button {
+    cursor: pointer;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.number-button,
+.action-button,
+.decimal-button,
+.negate-button {
+    color: var(--text-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    border: var(--border-width) var(--border-style);
+    font-size: var(--font-size-large);
+    font-weight: bold;
+}
+
+.action-button {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.number-button,
+.decimal-button,
+.negate-button {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.number-button:focus,
+.action-button:focus,
+.decimal-button:focus,
+.negate-button:focus {
+    outline: none;
+}
+
+.number-button:hover,
+.action-button:hover,
+.decimal-button:hover,
+.negate-button:hover,
+.number-button:active,
+.action-button:active,
+.decimal-button:active,
+.negate-button:active {
+    opacity: 0.7;
+}
+
+.clicked-num-button {
+    color: var(--text-color-inverted);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.clicked-action-button {
+    color: var(--secondary-color);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.toggle-button {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: var(--text-color);
+}
+
+.action-button__active {
+    color: var(--secondary-color);
+}
