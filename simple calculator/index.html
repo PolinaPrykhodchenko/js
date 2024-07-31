@@ -1,60 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Basics</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+            rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/styles/app.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Calculator</h1>
-    </header>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/styles/app.css"/>
+    <link rel="stylesheet" href="src/styles/buttons.css"/>
+    <link rel="stylesheet" href="src/styles/inputs.css"/>
+    <script src="./dist/scripts/calculator.js" defer></script>
+    <script src="./dist/scripts/main.js" defer></script>
+</head>
+<body>
+<div class="toggle-theme-wrapper">
+    <button class="toggle-button" id="theme-toggle" onclick="toggleThemeButton()">
+        <i id="toggle-icon" class="fas fa-moon"></i>
+    </button>
+</div>
 
-    <section class="calculator">
-      <input type="text" id="input-number" />
-      <div class="calc-actions-container">
-        <div class="number-buttons">
-          <button type="button" id="btn-nine" class="number-button" value="9"  onclick="buttonClicked(this)">9</button>
-          <button type="button" id="btn-eight" class="number-button" value="8"  onclick="buttonClicked(this)" >8</button>
-          <button type="button" id="btn-seven" class="number-button" value="7"  onclick="buttonClicked(this)" >7</button>
-          <button type="button" id="btn-six" class="number-button" value="6"  onclick="buttonClicked(this)" >6</button>
-          <button type="button" id="btn-five" class="number-button" value="5"  onclick="buttonClicked(this)" >5</button>
-          <button type="button" id="btn-four" class="number-button" value="4"  onclick="buttonClicked(this)" >4</button>
-          <button type="button" id="btn-three" class="number-button" value="3"  onclick="buttonClicked(this)" >3</button>
-          <button type="button" id="btn-two" class="number-button" value="2"  onclick="buttonClicked(this)" >2</button>
-          <button type="button" id="btn-one" class="number-button" value="1"  onclick="buttonClicked(this)" >1</button>
-          <button type="button" id="btn-zero" class="number-button" value="0"  onclick="buttonClicked(this)" >0</button>
-          <button type="button" id="btn-decimal" class="decimal-button" onclick="buttonClicked(this)" >.</button>
-          <button type="button" id="btn-negate" class="negate-button" onclick="buttonClicked(this)" >+/-</button>
+<header>
+    <h1>Calculator</h1>
+</header>
+
+<section class="calculator-wrapper">
+    <input type="text" id="input-number" class="calculator-input"/>
+
+    <div class="calculator-functional-wrapper">
+        <div class="calculator-buttons-wrapper">
+            <div class="number-buttons-wrapper">
+                <button
+                        type="button"
+                        value="9"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    9
+                </button>
+                <button
+                        type="button"
+                        value="8"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    8
+                </button>
+                <button
+                        type="button"
+                        value="7"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    7
+                </button>
+                <button
+                        type="button"
+                        value="6"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    6
+                </button>
+                <button
+                        type="button"
+                        value="5"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    5
+                </button>
+                <button
+                        type="button"
+                        value="4"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    4
+                </button>
+                <button
+                        type="button"
+                        value="3"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    3
+                </button>
+                <button
+                        type="button"
+                        value="2"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    2
+                </button>
+                <button
+                        type="button"
+                        value="1"
+                        onclick="buttonClicked(this)"
+                        class="number-button"
+                >
+                    1
+                </button>
+                <button
+                        type="button"
+                        value="0"
+                        onclick="buttonClicked(this)"
+                        class="number-button zero-button"
+                >
+                    0
+                </button>
+                <button
+                        type="button"
+                        value="decimal"
+                        class="number-button"
+                        onclick="buttonClicked(this)"
+                >
+                    &#8729;
+                </button>
+            </div>
+            <div class="action-buttons-wrapper">
+                <button
+                        type="button"
+                        value="clear"
+                        class="action-button"
+                        onclick="buttonClicked(this)"
+                >
+                    <span id="clear-button-span">CA</span>
+                </button>
+                <button
+                        type="button"
+                        value="percent"
+                        class="action-button"
+                        onclick="buttonClicked(this)"
+                >
+                    &#37;
+                </button>
+                <button
+                        type="button"
+                        value="negate"
+                        class="action-button"
+                        onclick="buttonClicked(this)"
+                >
+                    &#177;
+                </button>
+            </div>
         </div>
 
-        <div class="calc-actions">
-          <button type="button" id="btn-add" class="action-button" onclick="buttonClicked(this)" >+</button>
-          <button type="button" id="btn-subtract" class="action-button" onclick="buttonClicked(this)" >-</button>
-          <button type="button" id="btn-multiply" class="action-button" onclick="buttonClicked(this)" >*</button>
-          <button type="button" id="btn-divide" class="action-button" onclick="buttonClicked(this)" >/</button>
-          <button type="button" id="btn-execute" class="action-button" onclick="buttonClicked(this)" >=</button>
+        <div class="calculator-actions-wrapper">
+            <button
+                    type="button"
+                    value="ADD"
+                    class="action-button"
+                    onclick="buttonClicked(this)"
+            >
+                &#43;
+            </button>
+            <button
+                    type="button"
+                    value="SUBTRACT"
+                    class="action-button"
+                    onclick="buttonClicked(this)"
+            >
+                &#8722;
+            </button>
+            <button
+                    type="button"
+                    value="MULTIPLY"
+                    class="action-button"
+                    onclick="buttonClicked(this)"
+            >
+                &#215;
+            </button>
+            <button
+                    type="button"
+                    value="DIVIDE"
+                    class="action-button"
+                    onclick="buttonClicked(this)"
+            >
+                &#247;
+            </button>
+            <button
+                    type="button"
+                    value="EXECUTE"
+                    class="action-button"
+                    onclick="buttonClicked(this)"
+            >
+                &#61;
+            </button>
         </div>
-      </div>
+    </div>
+</section>
+
+<div class="calculation-result-wrapper">
+    <section class="calculation-log-wrapper">
+        <h2>Calculation log</h2>
+        <p id="calculation-log">No log info</p>
     </section>
 
-    <section class="calculation-log-container">
-      <h3>Calculation log</h3>
-      <p id="calculation-log">No log info</p>
+    <section class="calculation-execution-result-wrapper">
+        <h2>Calculation result</h2>
+        <p id="calculation-result">No results</p>
     </section>
+</div>
 
-    <section class="calculation-result">
-      <h3>Calculation result</h3>
-      <p id="calculation-result">No results</p>
-    </section>
 
-    <script src="assets/scripts/vendor.js"></script>
-    <script src="assets/scripts/app.js"></script>
-  </body>
+</body>
 </html>
