@@ -5,6 +5,7 @@
     "useTabs": false,
     "semi": true,
     "singleQuote": true,
+    "doubleQuotes": false,
     "quoteProps": "as-needed",
     "trailingComma": "es5",
     "bracketSpacing": true,
